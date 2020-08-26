@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SqliteAsync"
+        xmlns:ViewModels="clr-namespace:SqliteAsync.ViewModels"
         mc:Ignorable="d"
         Title="Book Manager" Height="350" Width="525" WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -14,14 +15,19 @@
     
     <TabControl>
         <TabItem Header="Insert">
+            <!-- Data context -->
+            <TabItem.DataContext>
+                <ViewModels:InsertViewModel />
+            </TabItem.DataContext>
             <Border Padding="10 5 10 5">
                 <StackPanel>
                     <!-- Title -->
                     <TextBlock Text="Title:" Style="{StaticResource DefaultHeader}" />
-                    <TextBox />
+                    <TextBox Text="{Binding Title}" />
                     <!-- Authors -->
                     <TextBlock Text="Authors:" Style="{StaticResource DefaultHeader}" />
-                    <TextBox AcceptsReturn="True" 
+                    <TextBox Text="{Binding Authors}"
+                             AcceptsReturn="True" 
                              TextWrapping="Wrap"
                              Height="50" />
                     <!-- Buttons -->
@@ -33,7 +39,11 @@
             </Border>
         </TabItem>
         <TabItem Header="View">
-            <DataGrid AutoGenerateColumns="True" />
+            <TabItem.DataContext>
+                <ViewModels:ViewViewModel />
+            </TabItem.DataContext>
+            <DataGrid ItemsSource="{Binding Books}" 
+                      AutoGenerateColumns="True" />
         </TabItem>
     </TabControl>
 </Window>
