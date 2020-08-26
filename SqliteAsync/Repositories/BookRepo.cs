@@ -23,7 +23,7 @@ namespace SqliteAsync.Repositories
                     int id = (int)conn.LastInsertRowId;
 
                     // 2. Add authors
-                    book.Authors.Split(new string[] { ", "}, StringSplitOptions.None).ToList
+                    //book.Authors.Split(new string[] { ", "}, StringSplitOptions.None).ToList
 
                     // 3. Bind relationships
 
