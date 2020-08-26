@@ -10,7 +10,7 @@ namespace SqliteAsync.Models
     {
         // Private members
         private string _title;
-        private List<Author> _authors;
+        private string _authors;
 
         // Public properties
         public string Title
@@ -20,25 +20,15 @@ namespace SqliteAsync.Models
         }
         public string Authors
         {
-            get
-            {
-                return string.Join(", ", _authors.Select(cur => cur.Name));
-            }
+            get { return _authors; }
+            set { _authors = value; OnPropertyChanged("Authors"); }
         }
 
         // Constructor
-        public Book(string title)
+        public Book(string title, string authors)
         {
             this.Title = title;
-            _authors = new List<Author>();
-        }
-
-        // Public methods
-        public void AddAuthors(List<Author> authors)
-        {
-            this._authors.Clear();
-            foreach (Author author in authors)
-                this._authors.Add(author);
+            this.Authors = authors;
         }
 
     }
