@@ -6,7 +6,34 @@
         xmlns:local="clr-namespace:SqliteAsync"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <Style x:Key="DefaultHeader" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="0 5 0 5" />
+        </Style>
+    </Window.Resources>
+    
+    <TabControl>
+        <TabItem Header="Insert">
+            <Border Padding="10 5 10 5">
+                <StackPanel>
+                    <!-- Title -->
+                    <TextBlock Text="Title:" Style="{StaticResource DefaultHeader}" />
+                    <TextBox />
+                    <!-- Authors -->
+                    <TextBlock Text="Authors:" Style="{StaticResource DefaultHeader}" />
+                    <TextBox AcceptsReturn="True" 
+                             TextWrapping="Wrap"
+                             Height="50" />
+                    <!-- Buttons -->
+                    <Button Content="Add"
+                            Width="80"
+                            HorizontalAlignment="Right"
+                            Margin="0 10 0 0" />
+                </StackPanel>
+            </Border>
+        </TabItem>
+        <TabItem Header="View">
+            <DataGrid AutoGenerateColumns="True" />
+        </TabItem>
+    </TabControl>
 </Window>
